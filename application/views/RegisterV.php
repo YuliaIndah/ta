@@ -16,14 +16,14 @@
 </style>  
 </head>  
 <body> 
-<?php
-  var_dump($jabatan);
-?> 
- <div class="wrapper">  
-  <div class="container">  
-   <div class="row">  
-    <div class="form-box">  
-     <div class="panel panel-primary">  
+  <?php
+  // var_dump($jabatan);
+  ?> 
+  <div class="wrapper">  
+    <div class="container">  
+     <div class="row">  
+      <div class="form-box">  
+       <div class="panel panel-primary">  
       <!-- <div class="panel-heading text-center">  
        <h3>Register</h3>  
      </div>  --> 
@@ -102,23 +102,8 @@
           <?php
         }
         ?>
-  </select>
-</div>
-    <div class="form-group">
-     <!-- <label for="kode_jabatan"> Jabatan :</label> -->
-     <select class="form-control" name="kode_jabatan" id="kode_jabatan">
-      <option value="0"> ----Pilih Jabatan----</option>
-      <option value="1"> Kepala Departemen</option>
-      <option value="2"> Sekertaris Departemen </option>
-      <option value="4"> Manajer Keuangan </option>
-      <option value="3"> Manajer Sarana dan Prasarana </option>
-      <option value="8"> Pegawai </option>
-      <option value="5"> Staf Sarana dan Prasarana </option>
-      <option value="6"> Staf Keuangan </option>
-      <option value="9"> Unit / Laboran </option>
-      <option value="7"> Mahasiswa </option>
-    </select>
-  </div>
+      </select>
+    </div>
   <div class="form-group">
     <!-- <label>Alamat</label> -->
     <textarea name="alamat" value="<?php echo set_value('alamat');?>" class="form-control" placeholder="Alamat" rows="3" required></textarea>

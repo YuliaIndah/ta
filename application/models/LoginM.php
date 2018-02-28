@@ -5,13 +5,13 @@ class LoginM extends CI_Model{
 		$this->load->database();
 	}
 
-	public function ceknum($email, $password){
+	public function ceknum($email, $password){ //cek akun di db pengguna jabatan (berapa rows)
 		$this->db->where('email', $email);
 		$this->db->where('password', md5($password));
 		return $this->db->get('pengguna_jabatan');
 	}
 
-	function make_captcha(){
+	function make_captcha(){ //membuat captcha
 		$this->load->helper('captcha');
 		$vals = array(
 			'img_path' => './/assets/image/captcha/',
@@ -39,7 +39,7 @@ class LoginM extends CI_Model{
 		return $cap['image'];
 	}
 
-	function check_captcha(){
+	function check_captcha(){  //post captcha
 		$expiration = time()-3600;
 		$sql = "DELETE FROM captcha WHERE captcha_time < ?";
 		$binds = array($expiration);

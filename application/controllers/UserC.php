@@ -6,12 +6,12 @@
     $this->load->database();  
     $this->load->model('UserM');  
   }    
-  public function index()
-  {  
+  public function halaman_daftar() //get option jabatan
+  {
     $data['jabatan'] = $this->UserM->get_pilihan_jabatan();
-    $this->load->view('RegisterV',$data);  
-  }  
-  public function daftar()  
+    $this->load->view('RegisterV',$data);
+  } 
+  public function daftar()  //post pendaftaran
   {  
     $this->form_validation->set_rules('no_identitas', 'Nomor Identitas', 'required');  
     $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');  
@@ -80,7 +80,7 @@
     }  
   }  
 
-  function sendemail($email,$saltid){  
+  function sendemail($email,$saltid){   //kirim email koonfirmasi
     $url = base_url()."UserC/confirmation/".$saltid;  
     $from_mail = 'dtedi.svugm@gmail.com';
     $to = $email;
@@ -99,7 +99,7 @@
 
   }  
 
-  public function confirmation($key){  
+  public function confirmation($key){  //post link konfirmasi
     if($this->UserM->verifyemail($key)){  
       $this->session->set_flashdata('msg','<div class="alert alert-success text-center">Your Email Address is successfully verified!</div>');  
       redirect(base_url()."LoginC");  

@@ -3,28 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class LoginC extends CI_Controller {
 
+	var $data = array();
+
 	public function __construct()
 	{
 		parent::__construct();	
-		$this->load->model('LoginM');
+		$this->load->model(['LoginM','UserM']);
 		$this->load->helper('url');
-	 // $this->load->helper('system_helper');
-	 // in_acces();
 
 	}
-	var $data = array();
-
-	public function index()
+	public function index() //load captcha
 	{
 		$data['cap_img'] = $this->LoginM->make_captcha();
 		$this->load->view('LoginV', $data);
 	}
-	public function daftar()
-	{
-		$this->load->view('RegisterV');
-	}
-
-	public function signin(){
+	public function signin(){ //post login
 		if($this->input->post('submit')){
 			if($this->CaptchaM->check_captcha() == TRUE)
 				echo "<span style=\"color:blue\">Captcha cocok</span>";

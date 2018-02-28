@@ -68,7 +68,7 @@
                     </div>
                     <div>
                       Belum punya akun ?
-                      <a href="<?php echo site_url('LoginC/daftar')?>">Daftar</a>
+                      <a href="<?php echo site_url('UserC/halaman_daftar')?>">Daftar</a>
                   </div>
               </div>
           </div>    
