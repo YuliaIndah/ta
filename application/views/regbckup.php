@@ -28,7 +28,6 @@
        <div class="row">  
          <div class="col-sm-12">  
            <?php echo $this->session->flashdata('msg'); ?>  
-           <div style="color: red; text-align: justify-all;"><?php echo validation_errors()?></div>
          </div>  
        </div>  
        <form action="<?php echo base_url(); ?>UserC/daftar" method="post">
@@ -89,7 +88,7 @@
 
 <div class="form-group">
   <!-- <label for="bidang"> Bidang yang akan di lamar :</label> -->
-  <select class="form-control" name="kode_jabatan" id="kode_jabatan">
+  <select class="form-control" name="id_bidang" id="id_bidang">
 <!--         <option value="analis"> System Analyst</option>
   <option value="front_end"> Front-End Developer </option> -->
   <option value="">---- Pilih Jabatan ---- </option>
@@ -101,7 +100,6 @@
   }
   ?>
 </select>
-<span class="text-danger"><?php echo form_error('kode_jabatan'); ?></span>  
 </div>
 <div class="form-group">
   <!-- <label>Alamat</label> -->
@@ -126,7 +124,7 @@
    <div class="form-group">  
     <div>  
      <input type="password" class="form-control" id="pswd" name="password" placeholder="Password" required="">  
-     <!-- <span class="text-danger"><?php echo form_error('password'); ?></span>   -->
+     <span class="text-danger"><?php echo form_error('password'); ?></span>  
    </div>  
  </div>  
 </div>
@@ -134,7 +132,7 @@
  <div class="form-group">  
   <div class="input-group" id="tgl_lahir">
    <input type="password" class="form-control" id="cn-pswd" name="confirmpswd" placeholder="Confirm Password" required="">  
-   <!-- <span class="text-danger"><?php echo form_error('confirmpswd'); ?></span>   -->
+   <span class="text-danger"><?php echo form_error('confirmpswd'); ?></span>  
  </div>           
 </div>  
 </div>
