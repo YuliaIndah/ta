@@ -42,7 +42,7 @@
       $email          = $_POST['email'];  
       $password       = $_POST['password'];  
       $passhash       = hash('md5', $password);  
-      $saltid         = md5($email);  
+      $email_encryption = md5($email);  
       $status_email   = "0";
       $status         = "tidak aktif"; 
       $data_pengguna  = array(
@@ -60,21 +60,23 @@
         'email'               => $email,  
         'password'            => $passhash,  
         'status'              => $status,  
-        'email_encryption'    => $saltid,  
+        'email_encryption'    => $email_encryption,  
         'status_email'        => $status_email);  
+
+      $this->session->set_userdata('no_identitas', $no_identitas); //ambil no_identitas buat resend konfirmasi email
 
 
       if($this->UserM->insert_pengguna($data_pengguna))  
       {  
         if($this->UserM->insert_pengguna_jabatan($data_pengguna_jabatan)){
-          $this->sendemail($email, $saltid);
+          $this->sendemail($email, $email_encryption);
         } 
       }
     }  
   }  
 
-  function sendemail($email,$saltid){   //kirim email koonfirmasi
-    $url = base_url()."UserC/confirmation/".$saltid;  
+  function sendemail($email,$email_encryption){   //kirim email koonfirmasi
+    $url = base_url()."UserC/confirmation/".$email_encryption;  
     $from_mail = 'dtedi.svugm@gmail.com';
     $to = $email;
 
@@ -88,8 +90,8 @@
 
     $sendtomail = mail($to, $subject, $message, $headers);
     if($sendtomail ) {
-     $this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Terima Kasih sudah melakukan pendaftaran akun. Silahkan cek email anda : <b>'.$email.'</b> dan klik tautan yang telah dikirimkan untuk <b>konfirmasi pendaftaran. </b><br> <a href="#">Email Salah ?</a></div>');
-     redirect(base_url('UserC/halaman_daftar'));  
+     $this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Terima Kasih sudah melakukan pendaftaran akun. Silahkan cek email anda : <b>'.$email.'</b> dan klik tautan yang telah dikirimkan untuk <b>konfirmasi pendaftaran. </b><br> </div>');
+     redirect(base_url('UserC/resend_email'));  
    }else {
     $this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Gagal melakukan pendaftaran. Silahkan mencoba kembali. . .</div>');  
     redirect(base_url('UserC/halaman_daftar'));  
@@ -97,6 +99,34 @@
   }
 
 }  
+
+public function resend_email(){
+  $this->load->view('resend_email');
+}
+public function post_resend_email(){
+  $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[pengguna_jabatan.email]');  
+  $this->form_validation->set_rules('no_identitas', 'Nomor Identitas', 'required');  
+  if ($this->form_validation->run() == FALSE) {
+    $this->resend_email();
+  }else{
+    $no_identitas = $_POST['no_identitas'];
+    $email        = $_POST['email'];
+    $email_encryption = md5($email);  
+
+    $data_resend = array(
+      'no_identitas'      => $no_identitas,
+      'email'             => $email,
+      'email_encryption'  => $email_encryption);
+
+      $this->session->set_userdata('no_identitas', $no_identitas); //ambil no_identitas buat resend konfirmasi email
+
+      if($this->UserM->insert_data_resend($data_resend)){
+        $this->sendemail($email, $email_encryption);
+      }else{
+        echo "email gagal";
+      }
+    }
+  }
 
   public function confirmation($key){  //post link konfirmasi
     if($this->UserM->verifyemail($key)){  
