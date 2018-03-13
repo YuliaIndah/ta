@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+  <meta name="author" content="GeeksLabs">
+  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="<?php echo base_url();?>assets/img/favicon.png">
 
   <title><?php echo $title; ?></title>
@@ -30,24 +33,28 @@
   <link href="<?php echo base_url();?>assets/css/style-responsive.css" rel="stylesheet" />
   <link href="<?php echo base_url();?>assets/css/xcharts.min.css" rel=" stylesheet"> 
   <link href="<?php echo base_url();?>assets/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+    <!-- =======================================================
+        Theme Name: NiceAdmin
+        Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+        Author: BootstrapMade
+        Author URL: https://bootstrapmade.com
+        ======================================================= -->
+      </head>
 
- 
-</head>
+      <body>
+        <!-- container section start -->
+        <section id="container" class="">
+          <header class="header dark-bg">
+            <div class="toggle-nav">
+              <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+            </div>
 
-<body>
-  <!-- container section start -->
-  <section id="container" class="">
-    <header class="header dark-bg">
-      <div class="toggle-nav">
-        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
-      </div>
-
-      <!--logo start-->
-      <a href="index.html" class="logo">Kepala <span class="lite">Departemen</span></a>
-      <!--logo end-->
-      <div class="top-nav notification-row">                
-        <!-- notificatoin dropdown start-->
-        <ul class="nav pull-right top-menu">
+            <!--logo start-->
+            <a href="index.html" class="logo">Sekretaris <span class="lite">Departemen</span></a>
+            <!--logo end-->
+            <div class="top-nav notification-row">                
+              <!-- notificatoin dropdown start-->
+              <ul class="nav pull-right top-menu">
                 <!-- <li id="alert_notificatoin_bar" class="dropdown">
                   <select class="form-control m-bot15">
                     <option>Kepala Departemen</option>
@@ -66,10 +73,10 @@
                   <ul class="dropdown-menu extended logout">
                     <div class="log-arrow-up"></div>
                     <li class="eborder-top">
-                      <a href="<?php echo site_url('KadepC/data_diri')?>"><i class="icon_profile"></i> Data Diri</a>
+                      <a href="<?php echo site_url('MahasiswaC/data_diri')?>"><i class="icon_profile"></i> Data Diri</a>
                     </li>
                     <li>
-                      <a href="<?php echo site_url('KadepC/pengaturan_akun')?>"><i class="icon_cogs"></i> Pengaturan Akun</a>
+                      <a href="<?php echo site_url('MahasiswaC/pengaturan_akun')?>"><i class="icon_cogs"></i> Pengaturan Akun</a>
                     </li>
                     <li>
                       <a href="<?php echo site_url('LoginC/logout')?>"><i class="icon_key_alt"></i> Log Out</a>
@@ -89,45 +96,23 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">                
                 <li class="">
-                  <a class="" href="<?php echo site_url('KadepC/')?>">
+                  <a class="" href="<?php echo site_url('MahasiswaC/')?>">
                     <i class="icon_house_alt"></i>
                     <span>Beranda</span>
                   </a>
                 </li>
-                <li class="sub-menu ">
-                  <a href="javascript:;" class="">
-                    <i class="icon_profile"></i>
-                    <span>Ka. Departemen</span>
-                    <span class="menu-arrow arrow_carrot-right"></span>
+                <li class="">
+                  <a class="" href="<?php echo site_url('MahasiswaC/pengajuan_kegiatan')?>">
+                    <i class=" icon_documents_alt"></i>
+                    <span>Pengajuan Kegiatan</span>
                   </a>
-                  <ul class="sub">
-                    <li class=""><a class="" href="<?php echo site_url('KadepC/pengajuan_kegiatan')?>">Pengajuan Kegiatan</a></li>                          
-                    <!-- <li><a class="" href="form_validation.html">Form Validation</a></li> -->
-                  </ul>
+                </li>
+                <li class="">
+                  <a class="" href="<?php echo site_url('MahasiswaC/status_pengajuan')?>">
+                    <i class="icon_tags_alt"></i>
+                    <span>Status Pengajuan</span>
+                  </a>
                 </li>   
-                <li class="sub-menu">
-                  <a href="javascript:;" class="">
-                    <i class="icon_profile"></i>
-                    <span>Pegawai</span>
-                    <span class="menu-arrow arrow_carrot-right"></span>
-                  </a>
-                  <ul class="sub">
-                    <li><a class="" href="<?php echo site_url('KadepC/pengajuan_kegiatan_pegawai')?>">Pengajuan Kegiatan</a></li>                          
-                    <li><a class="" href="<?php echo site_url('KadepC/kegiatan_pegawai')?>">Kegiatan</a></li>
-                  </ul>
-                </li> 
-                <li class="sub-menu">
-                  <a href="javascript:;" class="">
-                    <i class="icon_profile"></i>
-                    <span>Admin</span>
-                    <span class="menu-arrow arrow_carrot-right"></span>
-                  </a>
-                  <ul class="sub">
-                    <li><a class="" href="<?php echo site_url('KadepC/pengguna')?>">Pengguna</a></li>                          
-                    <li><a class="" href="<?php echo site_url('KadepC/jabatan')?>">Jabatan</a></li>
-                    <!-- <li><a class="" href="form_validation.html">Progress</a></li> -->
-                  </ul>
-                </li>       
               </ul>
               <!-- sidebar menu end-->
             </div>

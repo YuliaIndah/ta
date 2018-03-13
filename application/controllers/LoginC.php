@@ -58,7 +58,7 @@ class LoginC extends CI_Controller {
 								redirect('PegawaiC');
 							}else if ($this->session->userdata('kode_jabatan') == 9) {
 								redirect('UnitC');
-							}else {
+							}else if ($this->session->userdata('kode_jabatan') == 10) {
 								redirect('AdminC');
 							}	
 						}else{
