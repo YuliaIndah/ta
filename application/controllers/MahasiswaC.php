@@ -8,7 +8,7 @@ class MahasiswaC extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		Mahasiswa_access();
+		// Mahasiswa_access();
 	}
 
 	public function index(){ //halaman index mahasiswa (dashboard)

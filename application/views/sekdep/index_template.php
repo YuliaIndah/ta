@@ -3,9 +3,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-  <meta name="author" content="GeeksLabs">
-  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="<?php echo base_url();?>assets/img/favicon.png">
 
   <title><?php echo $title; ?></title>
@@ -33,28 +30,24 @@
   <link href="<?php echo base_url();?>assets/css/style-responsive.css" rel="stylesheet" />
   <link href="<?php echo base_url();?>assets/css/xcharts.min.css" rel=" stylesheet"> 
   <link href="<?php echo base_url();?>assets/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
-    <!-- =======================================================
-        Theme Name: NiceAdmin
-        Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-        Author: BootstrapMade
-        Author URL: https://bootstrapmade.com
-        ======================================================= -->
-      </head>
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/datatables/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/datatables/dataTables.bootstrap.min.css">
+</head>
 
-      <body>
-        <!-- container section start -->
-        <section id="container" class="">
-          <header class="header dark-bg">
-            <div class="toggle-nav">
-              <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
-            </div>
+<body>
+  <!-- container section start -->
+  <section id="container" class="">
+    <header class="header dark-bg">
+      <div class="toggle-nav">
+        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+      </div>
 
-            <!--logo start-->
-            <a href="index.html" class="logo">Sekretaris <span class="lite">Departemen</span></a>
-            <!--logo end-->
-            <div class="top-nav notification-row">                
-              <!-- notificatoin dropdown start-->
-              <ul class="nav pull-right top-menu">
+      <!--logo start-->
+      <a href="index.html" class="logo">Sekretaris <span class="lite">Departemen</span></a>
+      <!--logo end-->
+      <div class="top-nav notification-row">                
+        <!-- notificatoin dropdown start-->
+        <ul class="nav pull-right top-menu">
                 <!-- <li id="alert_notificatoin_bar" class="dropdown">
                   <select class="form-control m-bot15">
                     <option>Kepala Departemen</option>
@@ -175,6 +168,9 @@
         <script src="<?php echo base_url();?>assets/js/sparklines.js"></script>  
         <script src="<?php echo base_url();?>assets/js/charts.js"></script>
         <script src="<?php echo base_url();?>assets/js/jquery.slimscroll.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+        <script src="<?php echo base_url();?>assets/datatables/jquery.dataTables.min.js"></script>
+        <script src="<?php echo base_url();?>assets/datatables/dataTables.bootstrap.min.js"></script>
         <script>
 
       //knob
@@ -220,6 +216,13 @@
           }
         });
       });
+
+
+      // CSS data DataTable
+
+      $(document).ready(function() {
+        $('#example').DataTable();
+      } );
 
     </script>
 

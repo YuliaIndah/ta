@@ -13,7 +13,7 @@
   }   
   public function daftar()  //post pendaftaran
   {  
-    $this->form_validation->set_rules('no_identitas', 'Nomor Identitas', 'required');  
+    $this->form_validation->set_rules('no_identitas', 'Nomor Identitas', 'required|is_unique[pengguna.no_identitas]');  
     $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');  
     $this->form_validation->set_rules('jen_kel', 'Jenis Kelamin', 'required');  
     $this->form_validation->set_rules('tmp_lahir', 'Tempat Lahir', 'required');  
@@ -24,7 +24,7 @@
     $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[pengguna_jabatan.email]');  
     $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]|max_length[50]|matches[confirmpswd]');  
     $this->form_validation->set_rules('confirmpswd', 'Password Confirmation', 'trim|required|min_length[6]|max_length[50]'); 
-    $this->form_validation->set_message('is_unique', 'This %s is already exits'); 
+    $this->form_validation->set_message('is_unique', 'Data %s sudah dipakai'); 
     if ($this->form_validation->run() == FALSE)  
     {  
       $this->halaman_daftar();
@@ -60,7 +60,6 @@
         'email'               => $email,  
         'password'            => $passhash,  
         'status'              => $status,  
-        'email_encryption'    => $email_encryption,  
         'status_email'        => $status_email);  
 
       $this->session->set_userdata('no_identitas', $no_identitas); //ambil no_identitas buat resend konfirmasi email
@@ -75,7 +74,7 @@
     }  
   }  
 
-  function sendemail($email,$email_encryption){   //kirim email koonfirmasi
+  function sendemail($email,$email_encryption){   //kirim email konfirmasi
     $url = base_url()."UserC/confirmation/".$email_encryption;  
     $from_mail = 'dtedi.svugm@gmail.com';
     $to = $email;

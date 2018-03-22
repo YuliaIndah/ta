@@ -28,7 +28,7 @@
        <div class="row">  
          <div class="col-sm-12">  
            <?php echo $this->session->flashdata('msg'); ?>  
-           <div style="color: red; text-align: justify-all;"><?php echo validation_errors()?></div>
+           <!-- <div style="color: red; text-align: justify-all;"><?php echo validation_errors()?></div> -->
          </div>  
        </div>  
        <form action="<?php echo base_url(); ?>UserC/daftar" method="post">
@@ -41,7 +41,7 @@
             <!-- <label class="control-label" for="no_identitas">Nomor Identitas : </label>   -->
             <div>  
               <input type="text" class="form-control" id="no_identitas" name="no_identitas" placeholder="Nomor Identitas" required="" value="3403051802950002">  
-              <span class="text-danger"><?php echo form_error('no_identitas'); ?></span>  
+              <span class="text-danger" style="color: red;"><?php echo form_error('no_identitas'); ?></span>  
             </div>  
           </div>  
         </div>  
@@ -52,7 +52,7 @@
           <!-- <label class="control-label" for="nama">Nama Lengkap : </label>   -->
           <div >  
             <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap" required="" value="Febriya Yoga Pratama">  
-            <span class="text-danger"><?php echo form_error('nama'); ?></span>  
+            <span class="text-danger" style="color: red;"><?php echo form_error('nama'); ?></span>  
           </div>  
         </div>  
       </div>  
@@ -73,7 +73,7 @@
       <!-- <label class="control-label" for="tmp_lahir">Tempat Lahir</label>   -->
       <div>  
         <input type="text" class="form-control" id="tmp_lahir" name="tmp_lahir" placeholder="Tempat Lahir" required="" value="Gunungkidul">  
-        <span class="text-danger"><?php echo form_error('tmp_lahir'); ?></span>  
+        <span class="text-danger" style="color: red;"><?php echo form_error('tmp_lahir'); ?></span>  
       </div>  
     </div>  
   </div>
@@ -95,13 +95,15 @@
   <!-- <option value="">---- Pilih Jabatan ---- </option> -->
   <?php 
   foreach ($jabatan->result() as $pilihan_jabatan) {
+    if($pilihan_jabatan->kode_jabatan == "7" || $pilihan_jabatan->kode_jabatan == "8" || $pilihan_jabatan->kode_jabatan == "9"){ //hanya menampilkan mahasiswa pegawai dan unit/laboran
     ?>
     <option value="<?php echo $pilihan_jabatan->kode_jabatan ;?>"> <?php echo $pilihan_jabatan->nama_jabatan ;?> </option>
     <?php
   }
+  }
   ?>
 </select>
-<span class="text-danger"><?php echo form_error('kode_jabatan'); ?></span>  
+<span class="text-danger" style="color: red;"><?php echo form_error('kode_jabatan'); ?></span>  
 </div>
 <div class="form-group">
   <!-- <label>Alamat</label> -->
@@ -118,7 +120,7 @@
   <!-- <label class="control-label" for="pswd">Email</label>   -->
   <div>  
     <input type="email" class="form-control" id="email" name="email" placeholder="Email" required="" value="febriyanyoga@gmail.com">  
-    <span class="text-danger"><?php echo form_error('email'); ?></span>  
+    <span class="text-danger" style="color: red;"><?php echo form_error('email'); ?></span>  
   </div>  
 </div>  
 <div class="row">  
@@ -126,7 +128,7 @@
    <div class="form-group">  
     <div>  
      <input type="password" class="form-control" id="pswd" name="password" placeholder="Password" required="" value="18021995">  
-     <!-- <span class="text-danger"><?php echo form_error('password'); ?></span>   -->
+     <span class="text-danger"><?php echo form_error('password'); ?></span>
    </div>  
  </div>  
 </div>
@@ -134,7 +136,7 @@
  <div class="form-group">  
   <div class="input-group" id="tgl_lahir">
    <input type="password" class="form-control" id="cn-pswd" name="confirmpswd" placeholder="Confirm Password" required="" value="18021995">  
-   <!-- <span class="text-danger"><?php echo form_error('confirmpswd'); ?></span>   -->
+   <span class="text-danger"><?php echo form_error('confirmpswd'); ?></span>
  </div>           
 </div>  
 </div>

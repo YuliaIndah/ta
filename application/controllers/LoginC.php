@@ -35,6 +35,7 @@ class LoginC extends CI_Controller {
 						'kode_jabatan' 	=> $query->kode_jabatan,
 						'status'		=> $query->status,
 						'status_email'	=> $query->status_email,
+						'no_identitas'	=> $query->no_identitas,
 						'logged_in' 	=> TRUE
 					);
 					$this->session->set_userdata($userData);
