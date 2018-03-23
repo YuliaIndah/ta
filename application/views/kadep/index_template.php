@@ -12,8 +12,12 @@
   <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
   <link href="<?php echo base_url();?>assets/css/style-responsive.css" rel="stylesheet" />
   <link href="<?php echo base_url();?>assets/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+  <script src="<?php echo base_url();?>assets/js/jquery-3.1.1.min.js"></script>
+  <script src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
+  <script src="<?php echo base_url();?>assets/js/jquery-1.8.3.min.js"></script>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/datatables/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/datatables/dataTables.bootstrap.min.css">
+
 </head>
 
 <body>
@@ -110,21 +114,19 @@
     <!--main content end-->
   </section>
   <!-- container section start -->
+  <script src="<?php echo base_url();?>assets/js/jquery-3.1.1.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.js"></script>
+  <script src="<?php echo base_url();?>assets/js/scripts.js"></script>
   <script src="<?php echo base_url();?>assets/js/jquery-ui-1.10.4.min.js"></script>
-  <script src="<?php echo base_url();?>assets/js/jquery-1.8.3.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-ui-1.9.2.custom.min.js"></script>
 
   <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 
   <script src="<?php echo base_url();?>assets/js/jquery.scrollTo.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-  <script src="<?php echo base_url();?>assets/js/owl.carousel.js" ></script>
   <script src="<?php echo base_url();?>assets/js/jquery.rateit.min.js"></script>
   <!-- custom select -->
   <script src="<?php echo base_url();?>assets/js/jquery.customSelect.min.js" ></script>
-
-  <script src="<?php echo base_url();?>assets/js/scripts.js"></script>
   <script src="<?php echo base_url();?>assets/js/jquery-jvectormap-1.2.2.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/jquery-jvectormap-world-mill-en.js"></script>
   <script src="<?php echo base_url();?>assets/js/jquery.autosize.min.js"></script>

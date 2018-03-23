@@ -3,17 +3,13 @@
     <!--overview start-->
     <div class="row">
       <div class="col-lg-12">
-        <h3 class="page-header" style="margin-top: 0;"><i class="fa fa-gears"></i> Pengaturan Akun</h3>
-        <ol class="breadcrumb">
-          <li><i class="fa fa-gears"></i><a href="#">Pengaturan Akun</a></li>
-        </ol>
+        <h3 class="page-header" style="margin-top: 0;"><i class="fa fa-gears"></i> Pengaturan Akun </h3>
       </div>
     </div>
     <div class="row">
       <div class="container">
        <div class="panel panel-primary">
         <div class="panel-heading">
-          Ganti Password
         </div>
         <div class="panel-body">
           <div class="col-sm-10">

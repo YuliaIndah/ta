@@ -42,3 +42,8 @@
   <!-- <script src="<?php echo base_url();?>assets/js/charts.js"></script> -->
 
   <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+ <!--    <script src="<?php echo base_url();?>assets/js/jquery.customSelect.min.js" ></script>
+  <script src="<?php echo base_url();?>assets/js/jquery-jvectormap-1.2.2.min.js"></script>
+  <script src="<?php echo base_url();?>assets/js/jquery-jvectormap-world-mill-en.js"></script>
+  <script src="<?php echo base_url();?>assets/js/jquery.autosize.min.js"></script>
+ -->

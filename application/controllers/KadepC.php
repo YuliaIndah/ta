@@ -45,14 +45,24 @@ class KadepC extends CI_Controller {
 		$this->load->view('kadep/index_template', $data);
 	}
 
+	public function aktif($no_identitas){ //aktifasi akun pengguna
+		$this->KadepM->aktif($no_identitas);
+		redirect('KadepC/pengguna');
+	}
+
+    public function non_aktif($no_identitas){ //deaktifasi akun pengguna
+    	$this->KadepM->non_aktif($no_identitas);
+    	redirect('KadepC/pengguna');
+    }
+
  	// sebagai pegawai
 
-	// public function pengajuan_kegiatan_pegawai(){ //halaman pengajuan kegiatan (pegawai)
-	// 	$data['title'] = "Pengajuan Kegiatan | Kepala Departemen";
-	// 	$this->data['data_diri'] = $this->UserM->get_data_diri()->result()[0];  	//get data diri buat nampilin nama di pjok kanan
-	// 	$data['body'] = $this->load->view('kadep/pengajuan_kegiatan_pegawai_content', $this->data, true);
-	// 	$this->load->view('kadep/index_template', $data);
-	// }
+	public function pengajuan_kegiatan_pegawai(){ //halaman pengajuan kegiatan (pegawai)
+		$data['title'] = "Pengajuan Kegiatan | Kepala Departemen";
+		$this->data['data_diri'] = $this->UserM->get_data_diri()->result()[0];  	//get data diri buat nampilin nama di pjok kanan
+		$data['body'] = $this->load->view('kadep/pengajuan_kegiatan_pegawai_content', $this->data, true);
+		$this->load->view('kadep/index_template', $data);
+	}
 	public function kegiatan_pegawai(){ //halaman kegiatan pegawai
 		$data['title'] = "Daftar Kegiatan | Kepala Departemen";
 		$this->data['data_diri'] = $this->UserM->get_data_diri()->result()[0]; 
@@ -114,6 +124,9 @@ class KadepC extends CI_Controller {
 				$this->KadepM->save($upload,$insert_id); // Panggil function save yang ada di KadepM.php untuk menyimpan data ke database
 			}else{ // Jika proses upload gagal
 				$data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
+				$this->KadepM->delete($insert_id);//hapus data pengajuan kegiatan ketka gagal upload file
+				$this->session->set_flashdata('error','Data Pengajuan Kegiatan anda tidak berhasil ditambahkan');
+				redirect('KadepC/pengajuan_kegiatan_pegawai');
 			}
 			$this->session->set_flashdata('sukses','Data Pengajuan Kegiatan anda berhasil ditambahkan');
 			redirect('KadepC/kegiatan_pegawai');
@@ -123,4 +136,23 @@ class KadepC extends CI_Controller {
 		}
 	}
 }
+
+	public function edit_data_diri($no_identitas){ //edit data diri
+		$jen_kel    = $_POST['jen_kel'];
+		$tmp_lahir  = $_POST['tmp_lahir'];
+		$tgl_lahir  = $_POST['tgl_lahir'];
+		$alamat     = $_POST['alamat'];
+		$no_hp      = $_POST['no_hp'];
+
+		$data = array(
+			'jen_kel'     => $jen_kel,
+			'tmp_lahir'   => $tmp_lahir,
+			'tgl_lahir'   => $tgl_lahir,
+			'alamat'      => $alamat,
+			'no_hp'       => $no_hp
+		);
+		$this->KadepM->edit_data_diri($no_identitas,$data);
+		$this->session->set_flashdata('sukses','Data anda berhasil disimpan');
+		redirect('KadepC/data_diri');
+	}
 }

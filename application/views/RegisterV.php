@@ -40,7 +40,7 @@
           <div class="form-group">  
             <!-- <label class="control-label" for="no_identitas">Nomor Identitas : </label>   -->
             <div>  
-              <input type="text" class="form-control" id="no_identitas" name="no_identitas" placeholder="Nomor Identitas" required="" value="3403051802950002">  
+              <input type="text" class="form-control" id="no_identitas" name="no_identitas" placeholder="Nomor Identitas" required>  
               <span class="text-danger" style="color: red;"><?php echo form_error('no_identitas'); ?></span>  
             </div>  
           </div>  
@@ -51,7 +51,7 @@
         <div class="form-group">  
           <!-- <label class="control-label" for="nama">Nama Lengkap : </label>   -->
           <div >  
-            <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap" required="" value="Febriya Yoga Pratama">  
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap" required>  
             <span class="text-danger" style="color: red;"><?php echo form_error('nama'); ?></span>  
           </div>  
         </div>  
@@ -72,7 +72,7 @@
      <div class="form-group">  
       <!-- <label class="control-label" for="tmp_lahir">Tempat Lahir</label>   -->
       <div>  
-        <input type="text" class="form-control" id="tmp_lahir" name="tmp_lahir" placeholder="Tempat Lahir" required="" value="Gunungkidul">  
+        <input type="text" class="form-control" id="tmp_lahir" name="tmp_lahir" placeholder="Tempat Lahir" required>  
         <span class="text-danger" style="color: red;"><?php echo form_error('tmp_lahir'); ?></span>  
       </div>  
     </div>  
@@ -107,11 +107,11 @@
 </div>
 <div class="form-group">
   <!-- <label>Alamat</label> -->
-  <textarea name="alamat" value="" class="form-control" placeholder="Alamat" rows="3" required> Gunungkidul</textarea>
+  <textarea name="alamat" value="" class="form-control" placeholder="Alamat" rows="3" required></textarea>
 </div>
 <div class="form-group">
   <!-- <label>Nomor Handphone</label> -->
-  <input type="text" class="form-control" name="no_hp" value="081217109583" placeholder="Nomor Handphone" required>
+  <input type="text" class="form-control" name="no_hp" placeholder="Nomor Handphone" required>
 </div>
 <!-- <div class="panel-heading text-center">  
  <h4>Data Akun : </h4>  
@@ -119,7 +119,7 @@
 <div class="form-group">  
   <!-- <label class="control-label" for="pswd">Email</label>   -->
   <div>  
-    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required="" value="febriyanyoga@gmail.com">  
+    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>  
     <span class="text-danger" style="color: red;"><?php echo form_error('email'); ?></span>  
   </div>  
 </div>  
@@ -127,7 +127,7 @@
   <div class="col-md-6">
    <div class="form-group">  
     <div>  
-     <input type="password" class="form-control" id="pswd" name="password" placeholder="Password" required="" value="18021995">  
+     <input type="password" class="form-control" id="pswd" name="password" placeholder="Password" required>  
      <span class="text-danger"><?php echo form_error('password'); ?></span>
    </div>  
  </div>  
@@ -135,7 +135,7 @@
 <div class="col-md-6">
  <div class="form-group">  
   <div class="input-group" id="tgl_lahir">
-   <input type="password" class="form-control" id="cn-pswd" name="confirmpswd" placeholder="Confirm Password" required="" value="18021995">  
+   <input type="password" class="form-control" id="cn-pswd" name="confirmpswd" placeholder="Confirm Password" required>  
    <span class="text-danger"><?php echo form_error('confirmpswd'); ?></span>
  </div>           
 </div>  

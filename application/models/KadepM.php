@@ -65,4 +65,34 @@ class KadepM extends CI_Model{
 		
 		$this->db->insert('file_upload', $data);
 	}
+
+	public function delete($id){ //hapus data pengajuan kegiatan ketika gagal upload file
+		$this->db->where('kode_kegiatan', $id);
+		$this->db->delete('kegiatan');
+		return "berhasil delete";
+	}
+
+	public function aktif($no_identitas){ //aktifasi akun pengguna
+		$status = "aktif";
+		$data = array('status' =>$status,);
+
+		$this->db->where('no_identitas', $no_identitas);
+		$this->db->update('pengguna_jabatan', $data);
+		return;
+	}
+
+	public function non_aktif($no_identitas){ //deaktifasi akun pengguna
+		$status = "tidak aktif";
+		$data = array('status' =>$status,);
+
+		$this->db->where('no_identitas', $no_identitas);
+		$this->db->update('pengguna_jabatan', $data);
+		return;
+	}
+
+	public function edit_data_diri($no_identitas, $data){ //edit data diri
+		$this->db->where('no_identitas', $no_identitas);
+		$this->db->update('pengguna', $data);
+		return TRUE;
+	}
 }

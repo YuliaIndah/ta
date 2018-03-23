@@ -3,14 +3,19 @@
  class UserM extends CI_Model  
  {  
  	function __construct(){
-		parent:: __construct();
-		$this->load->database();
-	}
+ 		parent:: __construct();
+ 		$this->load->database();
+ 	}
 	public function insert_pengguna_jabatan($data){   //post pengguna_jabatan
 		return $this->db->insert('pengguna_jabatan', $data);  
 	}  
 	public function insert_pengguna($data){ //post pengguna
 		return $this->db->insert('pengguna', $data);
+	}
+	public function hapus($no_identitas){ //hapus data pengguna ketika tidak berhasil input data pengguna jabatan
+		$this->db->where('no_identitas', $no_identitas);
+		$this->db->delete('pengguna');
+		return;
 	}
 	public function verifyemail($key){  //post konfirmasi email ubah value status_email jadi 1 (aktif)
 		$data = array(
@@ -21,7 +26,7 @@
 	}
 	public function insert_data_resend($data){ //post resend data email
 		$this->db->where('no_identitas',$data['no_identitas']); 
-        return $this->db->update('pengguna_jabatan',$data);
+		return $this->db->update('pengguna_jabatan',$data);
 	}  
 	public function get_pilihan_jabatan(){ //mengambil jabatan dari db jabatan
 		$query = $this->db->get('jabatan');	
@@ -56,5 +61,5 @@
 		}else{
 			return null;
 		}
-	}
+	} 
 }  

@@ -59,7 +59,7 @@
               <span class="text-danger" style="color: red;"><?php echo form_error('tgl_kegiatan'); ?></span>  
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder id="tgl_pengajuan" name="tgl_pengajuan" required value="<?php echo date('Y-m-d');?>">
+              <input type="hidden" class="form-control" placeholder id="tgl_pengajuan" name="tgl_pengajuan" required value="<?php echo date('Y-m-d');?>">
             </div>
             <div class="form-group">
               <label>Dana yang diajukan</label>
@@ -72,10 +72,10 @@
 
             <div style="color: red;"><?php echo (isset($message))? $message : ""; ?></div>
             <div class="form-group">
-              <label>Berkas Proposal</label>
+              <label>Unggah Berkas</label>
               <input type="file" name="file_upload">
             </div>  
-            <input type="submit" class="btn btn-info col-lg-2" value="Submit">
+            <input type="submit" class="btn btn-info col-lg-2"  value="Submit">
             <!-- <button type="reset" class="btn btn-default">Reset Button</button> -->
           </form>
           <?php echo form_close()?>
@@ -83,12 +83,14 @@
         </div>
       </div>
       <div class="col-lg-4">
-        <div class="alert alert-info" style="margin-top: 40px;">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. <a href="#" class="alert-link">Alert Link</a>.<br>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. <a href="#" class="alert-link">Alert Link</a>.<br>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. <a href="#" class="alert-link">Alert Link</a>.<br>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. <a href="#" class="alert-link">Alert Link</a>.<br>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. <a href="#" class="alert-link">Alert Link</a>.<br>
+        <div class="alert alert-danger" style="margin-top: 53px;">
+          <ol type="1"> <strong>Perhatian !</strong>
+            <li>Isi <b>Nama Kegiatan</b> sesuai dengan kegiatan yang ingin dilaksanakan.</li>
+            <li>Pengisian <b>Tanggal Kegiatan</b> minimal <b>1 bulan</b> setelah tanggal pengajuan.</li>
+            <li>Pengisian <b>Dana yang diajukan</b> hanya menggunakan <b>angka</b> tanpa <b>titik(.)</b>.</li>
+            <li>Berkas yang diunggah hanya <b>satu(1)</b> berupa berkas <b>.pdf</b>. Apabila membutuhkan lebih dari satu berkas, maka harus dijadikan satu berkas <b>.pdf</b>.</li>
+            <li>Data yang sudah mendapat persetujuan <b>tidak dapat diubah</b>.</li>
+          </ol>
         </div>
       </div>
       <div class="col-lg-1"></div>
@@ -101,3 +103,8 @@
     </div>
   </div>
 </section>
+<!-- <script>
+function konfirmasi() {
+    confirm("Apakah anda yakin data yang anda isikan sudah benar?");
+}
+</script> -->

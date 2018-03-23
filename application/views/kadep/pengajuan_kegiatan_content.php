@@ -21,7 +21,7 @@
                   ?> -->
                   <table id="example" class="table table-striped table-bordered table-condensed" cellspacing="0" width="100%">
                     <thead>
-                      <tr>
+                      <tr class="text-center">
                         <!-- <th>No. Identitas</th> -->
                         <th>Nama Kegiatan</th>
                         <th>Tgl Kegiatan</th>
@@ -44,7 +44,8 @@
                           <td><?php echo $kegiatan->tgl_pengajuan;?></td>
                           <td><?php echo $kegiatan->dana_diajukan;?></td>
                           <td><?php echo $kegiatan->dana_disetujui;?></td>
-                          <td><?php echo $kegiatan->nama_file;?></td>
+                          <?php $link = base_url()."assets/file_upload/".$kegiatan->nama_file.".pdf";?>
+                          <td class="text-center"><a target="_blank" href="<?php echo $link?>"><span><img src="<?php echo base_url()?>assets/image/logo/pdf.svg" style="height: 30px;"></span></a></td>
                           <td><?php echo $kegiatan->nama;?></td>
                           <td><?php echo $kegiatan->nama_jabatan;?></td>
                           <td></td>

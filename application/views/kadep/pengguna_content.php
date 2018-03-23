@@ -32,7 +32,7 @@
                         <th>No. HP</th>
                         <th>Status Email</th>
                         <th>Status Akun</th>
-                        <th>Aksi</th>
+                        <th style="width: 50px;">Aksi</th>
                       </tr>
                     </thead>
                     <!-- <tfoot>
@@ -63,27 +63,44 @@
                             echo "Sudah Dikonfirmasi";
                           }; ?></td>
                           <td><?php echo $pengguna->status; ?></td>
-                          <td>hapus edit</td>
-                        </tr>
+                          <?php
+                          if($pengguna->status == "tidak aktif"){
+                            ?>
+                            <td>
+                              <a  data-toggle='tooltip' title='Aktif' class="btn btn-info btn-sm" href="<?php echo base_url('KadepC/aktif')."/".$pengguna->no_identitas;?>"><span class="glyphicon glyphicon-ok"></span></a>
+                              <a data-toggle='tooltip' title='Non-aktif' class="btn btn-danger btn-sm" disabled><span class="glyphicon glyphicon-remove"></span></a> 
+                            </td>
+                            <?php
+                          }else{
+                            ?>
+                            <td>
+                              <a  data-toggle='tooltip' title='Aktif' class="btn btn-info btn-sm" disabled><span class="glyphicon glyphicon-ok"></span></a>
+                              <a data-toggle='tooltip' title='Non-aktif' class="btn btn-danger btn-sm" href="<?php echo base_url('KadepC/non_aktif')."/".$pengguna->no_identitas;?>" ><span class="glyphicon glyphicon-remove"></span></a> 
+                              <?php
+                            }
 
-                        <?php
+                            ?>
+
+                          </tr>
+
+                          <?php
                         # code...
-                      }
-                      ?>
-                    </tbody>
-                  </table>
+                        }
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <!-- batas content -->
 
-      </section>
-      <div class="text-center">
-        <div class="credits">
-          <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          <!-- batas content -->
+
+        </section>
+        <div class="text-center">
+          <div class="credits">
+            <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>

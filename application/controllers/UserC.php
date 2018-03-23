@@ -65,11 +65,12 @@
       $this->session->set_userdata('no_identitas', $no_identitas); //ambil no_identitas buat resend konfirmasi email
 
 
-      if($this->UserM->insert_pengguna($data_pengguna))  
-      {  
+      if($this->UserM->insert_pengguna($data_pengguna)){  
         if($this->UserM->insert_pengguna_jabatan($data_pengguna_jabatan)){
           $this->sendemail($email, $email_encryption);
-        } 
+        }else{
+          $this->UserM->hapus($no_identitas); //hapus data pengguna ketika tidak berhasil input data pengguna jabatan
+        }
       }
     }  
   }  
