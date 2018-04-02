@@ -9,6 +9,7 @@
   public function halaman_daftar() //get option jabatan
   {
     $data['jabatan'] = $this->UserM->get_pilihan_jabatan();
+    $data['unit'] = $this->UserM->get_pilihan_unit();
     $this->load->view('RegisterV',$data);
   }   
   public function daftar()  //post pendaftaran
@@ -19,10 +20,11 @@
     $this->form_validation->set_rules('tmp_lahir', 'Tempat Lahir', 'required');  
     $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');  
     $this->form_validation->set_rules('kode_jabatan', 'Kode Jabatan', 'required');  
+    $this->form_validation->set_rules('kode_unit', 'Kode Unit', 'required');  
     $this->form_validation->set_rules('alamat', 'Alamat', 'required');  
     $this->form_validation->set_rules('no_hp', 'Nomor Handphone', 'required');  
-    $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[pengguna_jabatan.email]');  
-    $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]|max_length[50]|matches[confirmpswd]');  
+    $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[pengguna.email]');  
+    $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]|max_length[50]|matches[confirmpswd]');
     $this->form_validation->set_rules('confirmpswd', 'Password Confirmation', 'trim|required|min_length[6]|max_length[50]'); 
     $this->form_validation->set_message('is_unique', 'Data %s sudah dipakai'); 
     if ($this->form_validation->run() == FALSE)  
@@ -37,6 +39,7 @@
       $tmp_lahir      = $_POST['tmp_lahir'];  
       $tgl_lahir      = $_POST['tgl_lahir'];  
       $kode_jabatan   = $_POST['kode_jabatan'];  
+      $kode_unit      = $_POST['kode_unit'];  
       $alamat         = $_POST['alamat'];  
       $no_hp          = $_POST['no_hp'];  
       $email          = $_POST['email'];  
@@ -46,16 +49,14 @@
       $status_email   = "0";
       $status         = "tidak aktif"; 
       $data_pengguna  = array(
-        'no_identitas'  => $no_identitas,
-        'nama'          => $nama,  
-        'jen_kel'       => $jen_kel,  
-        'tmp_lahir'     => $tmp_lahir,  
-        'tgl_lahir'     => $tgl_lahir,  
-        'alamat'        => $alamat,  
-        'no_hp'         => $no_hp);
-
-      $data_pengguna_jabatan  = array(
         'no_identitas'        => $no_identitas,
+        'nama'                => $nama,  
+        'jen_kel'             => $jen_kel,  
+        'tmp_lahir'           => $tmp_lahir,  
+        'tgl_lahir'           => $tgl_lahir,  
+        'alamat'              => $alamat,  
+        'no_hp'               => $no_hp,
+        'kode_unit'           => $kode_unit,
         'kode_jabatan'        => $kode_jabatan,  
         'email'               => $email,  
         'password'            => $passhash,  
@@ -64,29 +65,28 @@
 
       $this->session->set_userdata('no_identitas', $no_identitas); //ambil no_identitas buat resend konfirmasi email
 
-
-      if($this->UserM->insert_pengguna($data_pengguna)){  
-        if($this->UserM->insert_pengguna_jabatan($data_pengguna_jabatan)){
-          $this->sendemail($email, $email_encryption);
-        }else{
-          $this->UserM->hapus($no_identitas); //hapus data pengguna ketika tidak berhasil input data pengguna jabatan
-        }
+      if($this->UserM->insert_pengguna($data_pengguna)){  //jika berhasil register
+          $this->sendemail($email, $email_encryption); //kirim email
       }
     }  
   }  
 
   function sendemail($email,$email_encryption){   //kirim email konfirmasi
-    $url = base_url()."UserC/confirmation/".$email_encryption;  
-    $from_mail = 'dtedi.svugm@gmail.com';
-    $to = $email;
+    $url        = base_url()."UserC/confirmation/".$email_encryption;  
+    $from_mail  = 'dtedi.svugm@gmail.com';
+    $to         = $email;
 
-    $subject = 'Verifikasi Pedaftaran Akun';
-    $message = '<h1>'.$url.'</h1><span style="color: red;"> Departemen Teknik Elektro dan Informatika </span>';
+    $subject    = 'Verifikasi Pedaftaran Akun';
+    $data       = array(
+                    'email'=> $email_encryption
+                    );
+    $message    = $this->load->view('email.php',$data,TRUE);
+    // '<h1>'.$url.'</h1><span style="color: red;"> Departemen Teknik Elektro dan Informatika </span>';
 
-    $headers  = 'MIME-Version: 1.0' . "\r\n";
-    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-    $headers .= 'To:  <'.$to.'>' . "\r\n";
-    $headers .= 'From: Departemen Teknik Elektro dan Informatika <'.$from_mail.'>' . "\r\n";
+    $headers    = 'MIME-Version: 1.0' . "\r\n";
+    $headers    .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    $headers    .= 'To:  <'.$to.'>' . "\r\n";
+    $headers    .= 'From: Departemen Teknik Elektro dan Informatika <'.$from_mail.'>' . "\r\n";
 
     $sendtomail = mail($to, $subject, $message, $headers);
     if($sendtomail ) {
@@ -104,7 +104,7 @@ public function resend_email(){
   $this->load->view('resend_email');
 }
 public function post_resend_email(){
-  $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[pengguna_jabatan.email]');  
+  $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[pengguna.email]');  
   $this->form_validation->set_rules('no_identitas', 'Nomor Identitas', 'required');  
   if ($this->form_validation->run() == FALSE) {
     $this->resend_email();
@@ -115,8 +115,7 @@ public function post_resend_email(){
 
     $data_resend = array(
       'no_identitas'      => $no_identitas,
-      'email'             => $email,
-      'email_encryption'  => $email_encryption);
+      'email'             => $email);
 
       $this->session->set_userdata('no_identitas', $no_identitas); //ambil no_identitas buat resend konfirmasi email
 

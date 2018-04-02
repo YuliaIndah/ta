@@ -27,6 +27,7 @@
                         <!-- <th>No. Identitas</th> -->
                         <th>Nama</th>
                         <th>No. Identitas</th>
+                        <th>Unit</th>
                         <th>Jabatan</th>
                         <th>Jenis Kelamin</th>
                         <th>No. HP</th>
@@ -54,7 +55,8 @@
                         <tr>
                           <td><?php echo $pengguna->nama; ?></td>
                           <td><?php echo $pengguna->no_identitas; ?></td>
-                          <td><?php echo $pengguna->nama_jabatan; ?></td>
+                          <td><?php echo $pengguna->nama_unit; ?></td>                          
+                          <td><?php echo $pengguna->nama_jabatan." ". $pengguna->nama_unit; ?></td>
                           <td><?php echo $pengguna->jen_kel; ?></td>
                           <td><?php echo $pengguna->no_hp; ?></td>
                           <td><?php if($pengguna->status_email == 0){

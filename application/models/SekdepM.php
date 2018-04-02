@@ -1,25 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class KadepM extends CI_Model{
+class SekdepM extends CI_Model{
 	function __construct(){
 		parent:: __construct();
 		$this->load->database();
 	}
 
-	function get_data_pengguna(){ //ambil data seluruh pengguna yang terdaftar
-		$this->db->select('*');
-		$this->db->from('pengguna');
-		$this->db->join('jabatan', 'jabatan.kode_jabatan = pengguna.kode_jabatan');
-		$this->db->join('unit', 'unit.kode_unit = pengguna.kode_unit');
-		$query = $this->db->get(); 
-		return $query;
-	}
-
 	function get_data_pengajuan(){
 		$this->db->select('*');
 		$this->db->from('kegiatan');
-		$this->db->join('pengguna', 'pengguna.no_identitas = kegiatan.no_identitas');
-		$this->db->join('jabatan', 'jabatan.kode_jabatan = pengguna.kode_jabatan');
-		$this->db->join('unit', 'unit.kode_unit = pengguna.kode_unit');
+		$this->db->join('pengguna_jabatan', 'pengguna_jabatan.id_pengguna_jabatan = kegiatan.id_pengguna_jabatan');
+		$this->db->join('pengguna', 'pengguna.no_identitas = pengguna_jabatan.no_identitas');
+		$this->db->join('jabatan', 'jabatan.kode_jabatan = pengguna_jabatan.kode_jabatan');
 		$this->db->join('jenis_kegiatan', 'jenis_kegiatan.kode_jenis_kegiatan = kegiatan.kode_jenis_kegiatan');
 		$this->db->join('file_upload', 'file_upload.kode_kegiatan = kegiatan.kode_kegiatan');
 		$query = $this->db->get();
@@ -70,24 +61,6 @@ class KadepM extends CI_Model{
 		$this->db->where('kode_kegiatan', $id);
 		$this->db->delete('kegiatan');
 		return "berhasil delete";
-	}
-
-	public function aktif($no_identitas){ //aktifasi akun pengguna
-		$status = "aktif";
-		$data = array('status' =>$status,);
-
-		$this->db->where('no_identitas', $no_identitas);
-		$this->db->update('pengguna', $data);
-		return;
-	}
-
-	public function non_aktif($no_identitas){ //deaktifasi akun pengguna
-		$status = "tidak aktif";
-		$data = array('status' =>$status,);
-
-		$this->db->where('no_identitas', $no_identitas);
-		$this->db->update('pengguna', $data);
-		return;
 	}
 
 	public function edit_data_diri($no_identitas, $data){ //edit data diri

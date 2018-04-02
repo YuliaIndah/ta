@@ -46,10 +46,10 @@
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
-                <a href="<?php echo site_url('SekdepC/data_diri')?>"><i class="icon_profile"></i> Data Diri</a>
+                <a href="<?php echo site_url('Man_sarprasC/data_diri')?>"><i class="icon_profile"></i> Data Diri</a>
               </li>
               <li>
-                <a href="<?php echo site_url('SekdepC/pengaturan_akun')?>"><i class="icon_cogs"></i> Pengaturan Akun</a>
+                <a href="<?php echo site_url('Man_sarprasC/pengaturan_akun')?>"><i class="icon_cogs"></i> Pengaturan Akun</a>
               </li>
               <li>
                 <a href="<?php echo site_url('LoginC/logout')?>"><i class="icon_key_alt"></i> Log Out</a>
@@ -68,25 +68,25 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">                
           <li>
-            <a href="<?php echo site_url('SekdepC/')?>">
+            <a href="<?php echo site_url('Man_sarprasC/')?>">
               <i class="icon_house_alt"></i>
               <span>Beranda</span>
             </a>
           </li>
           <li>
-            <a href="<?php echo site_url('SekdepC/pengajuan_kegiatan')?>">
+            <a href="<?php echo site_url('Man_sarprasC/pengajuan_kegiatan')?>">
               <i class="icon_bag_alt"></i>
               <span>Kegiatan Diajukan</span>
             </a>
           </li>
           <li>
-            <a href="<?php echo site_url('SekdepC/kegiatan_pegawai')?>">
+            <a href="<?php echo site_url('Man_sarprasC/kegiatan_pegawai')?>">
               <i class="icon_ol"></i>
               <span>Daftar Kegiatan</span>
             </a>
           </li>
           <!-- <li>
-            <a href="<?php echo site_url('SekdepC/pengajuan_kegiatan_pegawai')?>">
+            <a href="<?php echo site_url('Man_sarprasC/pengajuan_kegiatan_pegawai')?>">
               <i class="icon_pencil-edit"></i>
               <span>Ajukan Kegiatan</span>
             </a>

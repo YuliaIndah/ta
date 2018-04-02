@@ -33,6 +33,7 @@ class LoginC extends CI_Controller {
 						'email' 		=> $query->email,
 						'password' 		=> $query->password,
 						'kode_jabatan' 	=> $query->kode_jabatan,
+						'kode_unit' 	=> $query->kode_unit,
 						'status'		=> $query->status,
 						'status_email'	=> $query->status_email,
 						'no_identitas'	=> $query->no_identitas,
@@ -41,27 +42,33 @@ class LoginC extends CI_Controller {
 					$this->session->set_userdata($userData);
 					if ($this->session->userdata('status_email') == 1) {
 						if($this->session->userdata('status') == "aktif"){
-							if($this->session->userdata('kode_jabatan') == 1){
-								redirect('KadepC');
-							}else if ($this->session->userdata('kode_jabatan') == 2) {
-								redirect('SekdepC');
-							}else if ($this->session->userdata('kode_jabatan') == 3) {
-								redirect('Man_sarprasC');
-							}elseif ($this->session->userdata('kode_jabatan') == 4) {
-								redirect('Man_keuanganC');
-							}else if ($this->session->userdata('kode_jabatan') == 5) {
-								redirect('Staf_sarprasC');
-							}else if ($this->session->userdata('kode_jabatan') == 6) {
-								redirect('Staf_keuanganC');
-							}else if ($this->session->userdata('kode_jabatan') == 7) {
-								redirect('MahasiswaC');
-							}else if ($this->session->userdata('kode_jabatan') == 8) {
-								redirect('PegawaiC');
-							}else if ($this->session->userdata('kode_jabatan') == 9) {
-								redirect('UnitC');
-							}else if ($this->session->userdata('kode_jabatan') == 10) {
-								redirect('AdminC');
-							}	
+							if($this->session->userdata('kode_unit') == 1 ){
+								if($this->session->userdata('kode_jabatan') == 1){
+									redirect('KadepC');
+								}else if ($this->session->userdata('kode_jabatan') == 2){
+									redirect('SekdepC');
+								}								
+							}else if ($this->session->userdata('kode_unit') == 2) {
+								if($this->session->userdata('kode_jabatan') == 3){
+									redirect('Man_sarprasC');
+								}elseif ($this->session->userdata('kode_jabatan') == 4){
+									redirect('Staf_sarprasC');
+								}
+							}elseif ($this->session->userdata('kode_unit') == 3) {
+								if($this->session->userdata('kode_jabatan') == 3){
+									redirect('Man_keuanganC');
+								}else if($this->session->userdata('kode_jabatan') == 4){
+									redirect('Staf_keuanganC');
+								}
+							}else if ($this->session->userdata('kode_jabatan') == 1){
+								redirect('Kepala_unitC');
+							}else if ($this->session->userdata('kode_jabatan') == 4){
+								redirect('Staf_unitC');
+							}else if ($this->session->userdata('kode_unit') == 8) {
+								if($this->session->userdata('kode_jabatan') == 5){
+									redirect('MahasiswaC');
+								}
+							}
 						}else{
 							$this->session->set_flashdata('error','Mohon maaf untuk saat ini akun anda belum aktif. Silahkan hubungi <b>Administrator </b> untuk melakukan konfirmasi aktifasi akun.');
 							redirect('LoginC');	

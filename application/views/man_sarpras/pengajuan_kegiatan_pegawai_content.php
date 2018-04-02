@@ -15,8 +15,8 @@
       <div class="col-lg-1"></div>
       <div class="col-lg-6">
         <div class="panel-body mt-2">
-          <?php echo form_open_multipart('SekdepC/post_pengajuan_kegiatan_pegawai');?>
-          <form role="form" action="<?php echo base_url(); ?>SekdepC/post_pengajuan_kegiatan_pegawai" method="post">
+          <?php echo form_open_multipart('Man_sarprasC/post_pengajuan_kegiatan_pegawai');?>
+          <form role="form" action="<?php echo base_url(); ?>Man_sarprasC/post_pengajuan_kegiatan_pegawai" method="post">
             <!-- Alert -->
             <?php 
             $data=$this->session->flashdata('sukses');

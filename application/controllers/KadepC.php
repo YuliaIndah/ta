@@ -10,14 +10,13 @@ class KadepC extends CI_Controller {
 		parent::__construct();
 		$this->load->model(['UserM','KadepM']);
 		Kadep_access(); //helper buat batasi akses login/session
-
 	}
 
 	// sebagai semua
 	public function data_diri(){ //halaman data diri
 		$data['title'] = "Data Diri | Kepala Departemen";
 		$this->data['data_diri'] = $this->UserM->get_data_diri()->result()[0];  	//get data diri buat nampilin nama di pjok kanan
-		$data['body'] = $this->load->view('data_diri_content', $this->data, true) ;
+		$data['body'] = $this->load->view('kadep/data_diri_content', $this->data, true) ;
 		$this->load->view('kadep/index_template', $data);
 	}
 
@@ -65,8 +64,8 @@ class KadepC extends CI_Controller {
 	}
 	public function kegiatan_pegawai(){ //halaman kegiatan pegawai
 		$data['title'] = "Daftar Kegiatan | Kepala Departemen";
-		$this->data['data_diri'] = $this->UserM->get_data_diri()->result()[0]; 
-		$this->data['data_kegiatan'] = $this->UserM->get_kegiatan_pegawai()->result();	//get data diri buat nampilin nama di pjok kanan
+		$this->data['data_diri'] = $this->UserM->get_data_diri()->result()[0]; //get data diri buat nampilin nama di pjok kanan
+		$this->data['data_kegiatan'] = $this->UserM->get_kegiatan_pegawai()->result();	//menampilkan kegiatan yang diajukan user sebagai pegwai
 		$data['body'] = $this->load->view('kadep/kegiatan_pegawai_content', $this->data, true);
 		$this->load->view('kadep/index_template', $data);
 	}
@@ -88,9 +87,10 @@ class KadepC extends CI_Controller {
 		$this->load->view('kadep/index_template', $data);
 	}
 
-
+	// =============================
+	
 	public function post_pengajuan_kegiatan_pegawai(){ //fungsi post pengajuan kegiatan pegawai
-		$this->form_validation->set_rules('id_pengguna_jabatan', 'ID Pengguna Jabatan','required');
+		$this->form_validation->set_rules('no_identitas', 'No Identitas','required');
 		$this->form_validation->set_rules('kode_jenis_kegiatan', 'Kode Jenis Kegiatan','required');
 		$this->form_validation->set_rules('nama_kegiatan', 'Nama Kegiatan','required');
 		$this->form_validation->set_rules('tgl_kegiatan', 'Tanggal Kegiatan','required');
@@ -100,7 +100,7 @@ class KadepC extends CI_Controller {
 		if($this->form_validation->run() == FALSE){
 			redirect('KadepC/pengajuan_kegiatan_pegawai');
 		}else{
-			$id_pengguna_jabatan 	= $_POST['id_pengguna_jabatan'];
+			$no_identitas 	= $_POST['no_identitas'];
 			$kode_jenis_kegiatan 	= $_POST['kode_jenis_kegiatan'];
 			$nama_kegiatan 			= $_POST['nama_kegiatan'];
 			$tgl_kegiatan 			= $_POST['tgl_kegiatan'];
@@ -109,7 +109,7 @@ class KadepC extends CI_Controller {
 			$dana_disetujui			= $_POST['dana_disetujui'];
 
 			$data_pengajuan_kegiatan = array(
-				'id_pengguna_jabatan' 	=> $id_pengguna_jabatan,
+				'no_identitas' 	=> $no_identitas,
 				'kode_jenis_kegiatan' 	=> $kode_jenis_kegiatan,
 				'nama_kegiatan' 		=> $nama_kegiatan,
 				'tgl_kegiatan'			=> $tgl_kegiatan,

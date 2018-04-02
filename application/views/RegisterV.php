@@ -1,7 +1,7 @@
 <!DOCTYPE html>  
 <html lang="en">  
 <head>  
- <title>Registration</title>  
+ <title>Daftar | Sistem</title>  
  <meta charset="utf-8">  
  <meta http-equiv="X-UA-Compatible" content="IE=edge">  
  <meta name="viewport" content="width=device-width, initial-scale=1">  
@@ -86,20 +86,30 @@
   </div>  
 </div>
 </div>
+<div class="form-group">
+  <!-- <label for="bidang"> Bidang yang akan di lamar :</label> -->
+  <select class="form-control" name="kode_unit" id="kode_unit">
 
+  <option value="">---- Pilih Unit ---- </option>
+  <?php 
+  foreach ($unit->result() as $pilihan_unit) {
+    ?>
+    <option value="<?php echo $pilihan_unit->kode_unit ;?>"> <?php echo $pilihan_unit->nama_unit ;?> </option>
+    <?php
+  }
+  ?>
+</select>
+<span class="text-danger" style="color: red;"><?php echo form_error('kode_jabatan'); ?></span>  
+</div>
 <div class="form-group">
   <!-- <label for="bidang"> Bidang yang akan di lamar :</label> -->
   <select class="form-control" name="kode_jabatan" id="kode_jabatan">
-<!--         <option value="analis"> System Analyst</option>
-  <option value="front_end"> Front-End Developer </option> -->
-  <!-- <option value="">---- Pilih Jabatan ---- </option> -->
+  <option value="">---- Pilih Jabatan ---- </option>
   <?php 
   foreach ($jabatan->result() as $pilihan_jabatan) {
-    if($pilihan_jabatan->kode_jabatan == "7" || $pilihan_jabatan->kode_jabatan == "8" || $pilihan_jabatan->kode_jabatan == "9"){ //hanya menampilkan mahasiswa pegawai dan unit/laboran
     ?>
     <option value="<?php echo $pilihan_jabatan->kode_jabatan ;?>"> <?php echo $pilihan_jabatan->nama_jabatan ;?> </option>
     <?php
-  }
   }
   ?>
 </select>

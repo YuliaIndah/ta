@@ -16,7 +16,7 @@
         <div class="card mb-3">
           <div class="card-header">
             <div class="card-body">
-              <a href="<?php echo site_url('SekdepC/pengajuan_kegiatan_pegawai')?>" class="btn btn-info"><i class="icon_plus_alt2"> </i> Ajukan Kegiatan</a>
+              <a href="<?php echo site_url('Man_sarprasC/pengajuan_kegiatan_pegawai')?>" class="btn btn-info"><i class="icon_plus_alt2"> </i> Ajukan Kegiatan</a>
               <div class="table-responsive">
                <!-- <?php
                   var_dump($data_kegiatan);

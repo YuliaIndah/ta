@@ -8,7 +8,7 @@ class LoginM extends CI_Model{
 	public function ceknum($email, $password){ //cek akun di db pengguna jabatan (berapa rows)
 		$this->db->where('email', $email);
 		$this->db->where('password', md5($password));
-		return $this->db->get('pengguna_jabatan');
+		return $this->db->get('pengguna');
 	}
 
 	function make_captcha(){ //membuat captcha
